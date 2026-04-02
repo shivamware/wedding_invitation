@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sangameshwar & Anjali – Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#fdf8f2;
+  --white:#fff;
+  --cream:#f5ede0;
+  --deep:#1c1107;
+  --text:#2a1f0e;
+  --muted:#8a7560;
+  --border:#e2d5c0;
+  --gold:#c09a50;
+  --gold2:#d4b06a;
+  --rust:#8B3A2A;
+  --green:#1e4d35;
+  --surface:#f0e6d5;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:default}
+a{color:inherit;text-decoration:none}
+
+/* ══ SCROLL REVEAL ══ */
+.sr{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.sr.in{opacity:1;transform:none}
+.sr-up{opacity:0;transform:translateY(60px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.sr-up.in{opacity:1;transform:none}
+.sr-l{opacity:0;transform:translateX(-50px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.sr-l.in{opacity:1;transform:none}
+.sr-r{opacity:0;transform:translateX(50px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.sr-r.in{opacity:1;transform:none}
+.sr-s{opacity:0;transform:scale(.92);transition:opacity .8s ease,transform .8s ease}
+.sr-s.in{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.18s}.d3{transition-delay:.28s}.d4{transition-delay:.38s}
+.d5{transition-delay:.48s}.d6{transition-delay:.58s}
+
+/* ══ HERO ══ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:#f5ede0;overflow:hidden;text-align:center;padding:80px 20px 60px;
+}
+/* Kolam / mandala watermark */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(192,154,80,.06) 0%, transparent 60%),
+    radial-gradient(circle at 20% 10%, rgba(139,58,42,.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(139,58,42,.04) 0%, transparent 40%);
+  pointer-events:none;
+}
+/* Animated border lines */
+.hero::after{
+  content:'';position:absolute;inset:24px;
+  border:1px solid rgba(192,154,80,.25);
+  pointer-events:none;
+  animation:borderGlow 4s ease-in-out infinite alternate;
+}
+@keyframes borderGlow{
+  0%{border-color:rgba(192,154,80,.15)}
+  100%{border-color:rgba(192,154,80,.45)}
+}
+
+/* Diagonal decorative lines */
+.hero-deco{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.hero-deco svg{width:100%;height:100%}
+
+.hero-ganesh{
+  font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:5px;
+  color:var(--gold);margin-bottom:24px;
+  animation:fadeDown .9s ease forwards;opacity:0;animation-delay:.3s;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.hero-ornament{
+  width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 28px;
+  animation:fadeUp .8s ease forwards;opacity:0;animation-delay:.5s;
+}
+
+.hero-name{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(64px,14vw,130px);
+  font-weight:300;letter-spacing:6px;color:var(--deep);line-height:.95;
+  animation:fadeUp .9s ease forwards;opacity:0;
+}
+.hero-name.n1{animation-delay:.4s}
+.hero-name.n2{animation-delay:.7s}
+.hero-weds{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(16px,3.5vw,24px);letter-spacing:10px;color:var(--gold);
+  margin:16px 0;text-transform:uppercase;
+  animation:fadeUp .8s ease forwards;opacity:0;animation-delay:.6s;
+}
+.hero-date{
+  font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:4px;
+  color:var(--muted);margin-top:24px;
+  animation:fadeUp .8s ease forwards;opacity:0;animation-delay:.9s;
+}
+
+/* Corner motifs */
+.corner{position:absolute;width:60px;height:60px;opacity:.35}
+.corner svg{width:100%;height:100%}
+.corner-tl{top:36px;left:36px}
+.corner-tr{top:36px;right:36px;transform:rotate(90deg)}
+.corner-bl{bottom:36px;left:36px;transform:rotate(-90deg)}
+.corner-br{bottom:36px;right:36px;transform:rotate(180deg)}
+
+.scroll-hint{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.5;
+  animation:bounce 2.4s ease-in-out infinite;
+}
+.scroll-hint span{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* ══ INVITATION ══ */
+.invitation{background:var(--white);padding:80px 24px;text-align:center}
+.inv-inner{max-width:560px;margin:0 auto}
+.inv-mantra{
+  font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:3px;
+  color:var(--gold);margin-bottom:32px
+}
+.inv-ganesha{
+  width:70px;height:70px;margin:0 auto 28px;
+  background:radial-gradient(circle,rgba(192,154,80,.15),transparent);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:40px;border:1px solid rgba(192,154,80,.25)
+}
+.inv-blessings{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:var(--muted);line-height:1.9;margin-bottom:4px
+}
+.inv-dash{color:var(--gold);margin:8px 0;font-size:20px}
+.inv-invite{
+  font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:5px;
+  text-transform:uppercase;color:var(--gold);margin:28px 0 12px
+}
+.inv-body{
+  font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--muted);
+  line-height:1.9;margin-bottom:8px
+}
+.inv-couple{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(36px,8vw,56px);
+  font-weight:400;color:var(--deep);line-height:1.1;margin:8px 0
+}
+.inv-amp{color:var(--gold);font-style:italic}
+.inv-divider{
+  display:flex;align-items:center;gap:12px;margin:20px 0;
+  font-size:11px;letter-spacing:3px;color:var(--muted)
+}
+.inv-divider::before,.inv-divider::after{
+  content:'';flex:1;height:1px;background:var(--border)
+}
+
+/* ══ EVENTS ══ */
+.events{background:var(--cream);padding:80px 24px}
+.events-inner{max-width:640px;margin:0 auto}
+.section-label{
+  font-size:11px;font-weight:500;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);text-align:center;margin-bottom:12px
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(32px,7vw,52px);
+  font-weight:400;text-align:center;color:var(--deep);margin-bottom:8px;line-height:1.1
+}
+.section-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:var(--muted);text-align:center;margin-bottom:48px
+}
+.divider-gold{
+  width:60px;height:1px;background:var(--gold);margin:0 auto 48px
+}
+
+.event-card{
+  display:flex;align-items:stretch;gap:0;margin-bottom:16px;
+  background:var(--white);border-radius:6px;overflow:hidden;
+  border:1px solid var(--border);
+  transition:transform .3s ease, box-shadow .3s ease;
+  cursor:default;
+}
+.event-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(44,30,10,.1)
+}
+.event-accent{width:3px;flex-shrink:0}
+.ev-mehendi .event-accent{background:#7db87d}
+.ev-haldi .event-accent{background:#e8b84b}
+.ev-sangeet .event-accent{background:#7a6abf}
+.ev-engagement .event-accent{background:var(--rust)}
+.ev-muhurtham .event-accent{background:var(--green)}
+.ev-reception .event-accent{background:var(--gold)}
+
+.event-body{padding:22px 24px;flex:1}
+.event-name{
+  font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;
+  color:var(--deep);margin-bottom:6px;letter-spacing:.5px
+}
+.event-info{font-size:13px;color:var(--muted);line-height:1.9}
+.event-info span{display:block}
+.event-link{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:10px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);border-bottom:1px solid rgba(192,154,80,.4);
+  padding-bottom:1px;transition:opacity .2s
+}
+.event-link:hover{opacity:.6}
+
+/* ══ MAP ══ */
+.map-section{
+  background:var(--deep);padding:60px 24px;text-align:center
+}
+.map-title{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,44px);
+  color:var(--cream);margin-bottom:4px;font-weight:400
+}
+.map-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:15px;color:rgba(245,237,224,.5);margin-bottom:28px
+}
+.map-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(192,154,80,.6);color:var(--gold2);
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  padding:14px 36px;border-radius:2px;
+  transition:background .3s,border-color .3s;cursor:pointer
+}
+.map-btn:hover{background:rgba(192,154,80,.1);border-color:var(--gold2)}
+
+/* ══ COUPLE ══ */
+.couple{background:var(--white);padding:80px 24px}
+.couple-inner{max-width:680px;margin:0 auto;text-align:center}
+.couple-tag{
+  font-size:11px;font-weight:500;letter-spacing:6px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px
+}
+.couple-heading{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,44px);
+  font-weight:400;color:var(--deep);margin-bottom:12px
+}
+.couple-heading em{font-style:italic;color:var(--gold)}
+.couple-msg{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:17px;color:var(--muted);line-height:1.9;
+  max-width:520px;margin:0 auto 48px
+}
+
+/* ══ GALLERY CAROUSEL ══ */
+.gallery{background:var(--cream);padding:0 0 80px}
+.gallery-header{padding:80px 24px 40px;text-align:center}
+.gallery-wrap{position:relative;overflow:hidden;max-width:460px;margin:0 auto;border-radius:8px}
+.gallery-track{
+  display:flex;
+  transition:transform .6s cubic-bezier(.4,0,.2,1)
+}
+.gallery-slide{
+  min-width:100%;height:520px;object-fit:cover;flex-shrink:0;
+  background:var(--surface);display:flex;align-items:center;justify-content:center
+}
+.gallery-slide img{width:100%;height:100%;object-fit:cover}
+.gallery-controls{
+  display:flex;justify-content:center;align-items:center;
+  gap:16px;margin-top:24px
+}
+.g-btn{
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--border);background:var(--white);
+  color:var(--text);font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s,transform .2s
+}
+.g-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--white);transform:scale(1.05)}
+.g-dots{display:flex;gap:6px;align-items:center}
+.g-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--border);border:none;cursor:pointer;padding:0;
+  transition:background .3s,transform .3s
+}
+.g-dot.active{background:var(--gold);transform:scale(1.4)}
+
+/* ══ RSVP ══ */
+.rsvp-section{
+  background:var(--deep);padding:80px 24px;text-align:center
+}
+.rsvp-title{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(32px,7vw,52px);
+  font-weight:300;color:var(--cream);margin-bottom:8px;letter-spacing:2px
+}
+.rsvp-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:rgba(245,237,224,.5);margin-bottom:32px
+}
+.rsvp-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--gold);color:var(--deep);
+  font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  padding:16px 40px;border-radius:3px;
+  transition:opacity .2s,transform .2s
+}
+.rsvp-btn:hover{opacity:.85;transform:translateY(-2px)}
+.rsvp-wa{font-size:16px}
+
+/* ══ THINGS TO KNOW ══ */
+.tik{background:var(--bg);padding:80px 24px}
+.tik-inner{max-width:680px;margin:0 auto}
+.tik-header{text-align:center;margin-bottom:48px}
+.tik-desc{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:var(--muted);margin-top:8px;line-height:1.8
+}
+.tik-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px
+}
+.tik-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:8px;padding:28px 24px;
+  display:flex;align-items:flex-start;gap:16px;
+  transition:transform .3s ease,box-shadow .3s ease
+}
+.tik-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(44,30,10,.08)}
+.tik-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--cream);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0
+}
+.tik-name{font-weight:500;font-size:14px;color:var(--deep);margin-bottom:4px}
+.tik-text{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ══ INSTAGRAM ══ */
+.insta{background:var(--surface);padding:80px 24px;text-align:center}
+.insta-title{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(32px,7vw,52px);
+  font-weight:400;color:var(--deep);line-height:1.1;margin-bottom:6px
+}
+.insta-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:15px;color:var(--muted);margin-bottom:28px
+}
+.insta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--border);background:var(--white);
+  padding:14px 32px;border-radius:3px;font-size:13px;
+  font-weight:500;color:var(--text);letter-spacing:1px;
+  transition:background .2s,border-color .2s
+}
+.insta-btn:hover{background:var(--cream);border-color:var(--gold)}
+.insta-icon{font-size:18px}
+
+/* ══ COUNTDOWN ══ */
+.countdown-section{
+  background:var(--deep);padding:80px 24px;text-align:center;
+  position:relative;overflow:hidden
+}
+.countdown-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 100%, rgba(192,154,80,.06) 0%, transparent 70%);
+  pointer-events:none
+}
+.cd-label{
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(192,154,80,.7);margin-bottom:24px
+}
+.cd-grid{
+  display:flex;justify-content:center;gap:32px;margin:20px 0 32px
+}
+.cd-unit{display:flex;flex-direction:column;align-items:center;gap:6px}
+.cd-num{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(44px,10vw,80px);
+  font-weight:300;color:var(--cream);line-height:1;
+  min-width:80px;text-align:center
+}
+.cd-sep{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(44px,10vw,70px);
+  font-weight:300;color:rgba(192,154,80,.4);line-height:1;
+  align-self:flex-start;padding-top:4px
+}
+.cd-unit-label{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(245,237,224,.35)
+}
+.cd-msg{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:rgba(245,237,224,.45);max-width:480px;margin:0 auto
+}
+
+/* ══ FOOTER ══ */
+footer{
+  background:var(--deep);border-top:1px solid rgba(255,255,255,.06);
+  padding:24px;text-align:center
+}
+footer p{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.25)}
+
+/* Floating kolam dot decorations */
+@keyframes float1{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(180deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(-180deg)}}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:600px){
+  .hero::after{inset:12px}
+  .corner{width:40px;height:40px}
+  .corner-tl{top:20px;left:20px}
+  .corner-tr{top:20px;right:20px}
+  .corner-bl{bottom:20px;left:20px}
+  .corner-br{bottom:20px;right:20px}
+  .tik-grid{grid-template-columns:1fr}
+  .cd-grid{gap:16px}
+  .cd-num{min-width:60px}
+  .gallery-slide{height:380px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-deco">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="0" y1="0" x2="30" y2="100" stroke="rgba(192,154,80,.05)" stroke-width="0.3"/>
+      <line x1="100" y1="0" x2="70" y2="100" stroke="rgba(192,154,80,.05)" stroke-width="0.3"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(192,154,80,.04)" stroke-width="0.2"/>
+    </svg>
+  </div>
+
+  <!-- Corner motifs -->
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 60 60" fill="none">
+      <path d="M2 2 L28 2 L28 8 M2 2 L2 28 L8 28" stroke="#c09a50" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="16" cy="16" r="6" stroke="#c09a50" stroke-width="1"/>
+      <circle cx="16" cy="16" r="2" fill="#c09a50" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 60 60" fill="none">
+      <path d="M2 2 L28 2 L28 8 M2 2 L2 28 L8 28" stroke="#c09a50" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="16" cy="16" r="6" stroke="#c09a50" stroke-width="1"/>
+      <circle cx="16" cy="16" r="2" fill="#c09a50" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 60 60" fill="none">
+      <path d="M2 2 L28 2 L28 8 M2 2 L2 28 L8 28" stroke="#c09a50" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="16" cy="16" r="6" stroke="#c09a50" stroke-width="1"/>
+      <circle cx="16" cy="16" r="2" fill="#c09a50" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 60 60" fill="none">
+      <path d="M2 2 L28 2 L28 8 M2 2 L2 28 L8 28" stroke="#c09a50" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="16" cy="16" r="6" stroke="#c09a50" stroke-width="1"/>
+      <circle cx="16" cy="16" r="2" fill="#c09a50" opacity=".4"/>
+    </svg>
+  </div>
+
+  <p class="hero-ganesh">ॐ श्री गणेशाय नम</p>
+  <p class="hero-ganesh">श्री संगमेश्वर प्रसन्न</p>
+  <div class="hero-ornament"></div>
+  <h1 class="hero-name n1">Sangameshwar</h1>
+  <p class="hero-weds">Weds</p>
+  <h1 class="hero-name n2">Anjali</h1>
+  <p class="hero-date">April 21th, 2026 &nbsp;·&nbsp; Our Home, Hondala</p>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══ INVITATION ══ -->
+<section class="invitation">
+  <div class="inv-inner">
+    <p class="inv-mantra sr">ॐ श्री गणेशाय नम</p>
+    <p class="inv-mantra sr">श्री संगमेश्वर प्रसन्न </p>
+    <div class="inv-ganesha sr d1">🪔</div>
+
+    <p class="inv-invite sr d3">INVITE</p>
+    <p class="inv-body sr d3">You to join us in the wedding celebrations of</p>
+    <h2 class="inv-couple sr d4">Sangameshwar</h2>
+    <h2 class="inv-couple sr d4"><span class="inv-amp">&amp;</span></h2>
+    <h2 class="inv-couple sr d4">Anjali</h2>
+
+    <div class="inv-divider sr d4">Son of</div>
+    <p class="inv-blessings sr d5">Smt. Parvathi &amp; Shri Sankar ware</p>
+    <p class="inv-body sr d5" style="margin-top:12px">On the following events</p>
+  </div>
+</section>
+
+<!-- ══ EVENTS ══ -->
+<section class="events">
+  <div class="events-inner">
+    <p class="section-label sr">Wedding Celebrations</p>
+    <h2 class="section-title sr d1">Join Us</h2>
+    <p class="section-sub sr d2">Across four beautiful days of celebration</p>
+    <div class="divider-gold sr d2"></div>
+
+    <div class="event-card ev-mehendi sr">
+      <div class="event-accent"></div>
+      <div class="event-body">
+        <div class="event-name">Haldi</div>
+        <div class="event-info">
+          <span>Monday, April 20th 2026</span>
+          <span>Our Home , Hondala</span>
+          <span>4pm Onwards</span>
+        </div>
+        <a href="#" class="event-link">See the route →</a>
+      </div>
+    </div>
+
+    
+
+    
+
+    <div class="event-card ev-reception sr d5">
+      <div class="event-accent"></div>
+      <div class="event-body">
+        <div class="event-name">Dev Karya</div>
+        <div class="event-info">
+          <span>Monday, April 20th 2026</span>
+          <span>Our Home , Hondala</span>
+          <span>4pm Onwards</span>
+        </div>
+        <a href="#" class="event-link">See the route →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAP ══ -->
+<div class="map-section">
+  <p class="section-label sr" style="color:rgba(192,154,80,.7)">Venue</p>
+  <h2 class="map-title sr d1">See the route</h2>
+  <p class="map-sub sr d2">Click to open the map</p>
+  <a href="https://maps.app.goo.gl/8yHd2aeuqm7b7UFi9" class="map-btn sr d2" target="_blank">
+    <span>📍</span> Open in Google Maps
+  </a>
+</div>
+
+<!-- ══ COUPLE ══ -->
+<section class="couple">
+  <div class="couple-inner">
+    <p class="couple-tag sr">Our Story</p>
+    <h2 class="couple-heading sr d1">Meet the <em>Bride &amp; Groom</em></h2>
+    <div class="divider-gold sr d1" style="margin-bottom:24px"></div>
+    <p class="couple-msg sr d2">We are both so delighted that you are able to join us in celebrating what we hope will be one of the happiest days of our lives. The affection shown to us since our Nichayathartham has been incredibly moving. We look forward to seeing you at the wedding.</p>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery">
+  <div class="gallery-header">
+    <p class="section-label sr">Memories</p>
+    <h2 class="section-title sr d1">Our Gallery</h2>
+    <div class="divider-gold sr d1" style="margin-bottom:0"></div>
+  </div>
+
+  <div class="gallery-wrap sr-s">
+    <div class="gallery-track" id="galleryTrack">
+      <!-- Using actual framer images from the site -->
+      <div class="gallery-slide" style="background:linear-gradient(135deg,#d4a57a,#8b5e3c)">
+        <img src="https://framerusercontent.com/images/HbWyQm5QqRuXQY7LxMf5kx10akU.png" alt="Wedding photo 1" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="gallery-slide" style="background:linear-gradient(135deg,#c4956a,#7a4e2c)">
+        <img src="https://framerusercontent.com/images/gXWpfu1hEOSPMvZeJtINB07pfJU.png" alt="Wedding photo 2" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="gallery-slide" style="background:linear-gradient(135deg,#e8c4a0,#b07040)">
+        <img src="https://framerusercontent.com/images/VgBpHrwsihOjP7HT4E3SSrxEs0.png" alt="Wedding photo 3" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="gallery-slide" style="background:linear-gradient(135deg,#d4b090,#9a7050)">
+        <img src="https://framerusercontent.com/images/4moRDGJdHuGozf1nEo8Y2t4pdw.png" alt="Wedding photo 4" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-controls sr">
+    <button class="g-btn" onclick="galleryPrev()">&#8592;</button>
+    <div class="g-dots" id="galleryDots"></div>
+    <button class="g-btn" onclick="galleryNext()">&#8594;</button>
+  </div>
+</section>
+
+<!-- ══ RSVP ══ -->
+<div class="rsvp-section">
+  <p class="section-label sr" style="color:rgba(192,154,80,.7)">You're Invited</p>
+  <h2 class="rsvp-title sr d1">Please<br>RSVP</h2>
+  <p class="rsvp-sub sr d2">Click to message us on WhatsApp</p>
+  <a href="https://wa.me/919850002056" class="rsvp-btn sr d2" target="_blank">
+    <span class="rsvp-wa">💬</span> RSVP on WhatsApp
+  </a>
+</div>
+
+
+
+
+
+<!-- ══ COUNTDOWN ══ -->
+<div class="countdown-section">
+  <p class="cd-label sr">The Big Day Arrives In</p>
+  <div class="cd-grid sr d1">
+    <div class="cd-unit">
+      <span class="cd-num" id="cd-days">00</span>
+      <span class="cd-unit-label">Days</span>
+    </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit">
+      <span class="cd-num" id="cd-hours">00</span>
+      <span class="cd-unit-label">Hours</span>
+    </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit">
+      <span class="cd-num" id="cd-mins">00</span>
+      <span class="cd-unit-label">Mins</span>
+    </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit">
+      <span class="cd-num" id="cd-secs">00</span>
+      <span class="cd-unit-label">Secs</span>
+    </div>
+  </div>
+  <p class="cd-msg sr d2">Our families are excited that you are able to join us in celebrating what we hope will be one of the happiest days of our lives.</p>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>© shivam 2026</p>
+</footer>
+
+<script>
+// ══ SCROLL REVEAL ══
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.sr,.sr-up,.sr-l,.sr-r,.sr-s').forEach(el => observer.observe(el));
+
+// ══ GALLERY ══
+let currentSlide = 0;
+const slides = document.querySelectorAll('.gallery-slide');
+const track = document.getElementById('galleryTrack');
+const dotsContainer = document.getElementById('galleryDots');
+const total = slides.length;
+
+// Build dots
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'g-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  dotsContainer.appendChild(dot);
+});
+
+function goToSlide(n) {
+  currentSlide = (n + total) % total;
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.g-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+}
+
+function galleryNext() { goToSlide(currentSlide + 1); }
+function galleryPrev() { goToSlide(currentSlide - 1); }
+
+// Auto-advance
+setInterval(() => galleryNext(), 4000);
+
+// Touch/swipe
+let touchStartX = 0;
+track.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
+track.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) dx < 0 ? galleryNext() : galleryPrev();
+});
+
+// ══ COUNTDOWN ══
+function updateCountdown() {
+  const wedding = new Date('2026-04-21T06:00:00');
+  const now = new Date();
+  const diff = wedding - now;
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
